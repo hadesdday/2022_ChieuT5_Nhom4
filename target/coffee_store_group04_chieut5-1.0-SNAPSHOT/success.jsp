@@ -74,13 +74,16 @@
         <h2 class="fw-bold">Đặt hàng thành công</h2>
     </div>
     <div class="row text-center mt-3">
-        <p class="fs-5">Đơn hàng của bạn đang được xử lý , vui lòng chờ trong giây lát</p>
+        <p class="fs-5">Đơn hàng của bạn đang được xử lý , vui lòng chờ trong giây
+            lát</p>
     </div>
-    <div class="row d-flex justify-content-center">
-        <button class="back-to-home">
-            <i class="fa-solid fa-arrow-left m-1"></i>
-            <a href="${pageContext.request.contextPath}">Trở về trang chủ</a>
-        </button>
+    <div class="row text-center">
+        <a href="${pageContext.request.contextPath}">
+            <button class="back-to-home">
+                <i class="fa-solid fa-arrow-left m-1"></i>
+                Trở về trang chủ
+            </button>
+        </a>
     </div>
     <div class="row text-center mt-5">
         <p class="fw-bold fs-4">Khám Phá Ưu Đãi</p>

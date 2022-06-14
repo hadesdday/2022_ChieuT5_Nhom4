@@ -14,13 +14,20 @@ function searchBarToggle() {
 
 $("input[name='paymentMethod']").on("input", function () {
     var val = $(this).val();
+    var dataValid = checkValidData();
     $("input[name='pMethod']").val(val);
+
+    if (!dataValid && val === "online banking") {
+        $("#pay-action").removeAttr("disabled");
+        $("#pay-action").css("opacity", 1);
+    } else {
+        $("#pay-action").attr("disabled", true);
+        $("#pay-action").css("opacity", 0.5);
+    }
+
     if (val !== "online banking") {
         $("#pay-action").attr("disabled", true);
         $("#pay-action").css("opacity", 0.5);
-    } else {
-        $("#pay-action").removeAttr("disabled");
-        $("#pay-action").css("opacity", 1);
     }
 })
 
@@ -163,28 +170,103 @@ function setErrorLabelDisplay() {
     }
 }
 
+function onlineMethodChecked() {
+    var paymentMethod = $("input[name='pMethod']").val();
+    if (paymentMethod === "online banking") return true;
+    return false;
+}
+
 $(() => {
     var invalid = checkValidData();
+
+    if (!invalid && onlineMethodChecked()) {
+        $("#pay-action").removeAttr("disabled");
+        $("#notify__message").remove();
+        $("#pay-action").css("opacity", 1);
+    } else {
+        $("#pay-action").css("opacity", 0.5);
+        $("#pay-action").attr("disabled", true);
+    }
+
+    if (!invalid && !onlineMethodChecked()) {
+        $("#notify__message").remove();
+    }
 
     $("input[name='fullname']").change(function () {
         invalid = checkValidData();
         setErrorLabelDisplay();
+        if (!invalid && onlineMethodChecked()) {
+            $("#pay-action").removeAttr("disabled");
+            $("#notify__message").remove();
+            $("#pay-action").css("opacity", 1);
+        } else {
+            $("#pay-action").css("opacity", 0.5);
+            $("#pay-action").attr("disabled", true);
+        }
+        if (!invalid && !onlineMethodChecked()) {
+            $("#notify__message").remove();
+        }
     });
     $("input[name='email']").change(function () {
         invalid = checkValidData();
         setErrorLabelDisplay();
+        if (!invalid && onlineMethodChecked()) {
+            $("#pay-action").removeAttr("disabled");
+            $("#notify__message").remove();
+            $("#pay-action").css("opacity", 1);
+        } else {
+            $("#pay-action").css("opacity", 0.5);
+            $("#pay-action").attr("disabled", true);
+        }
+        if (!invalid && !onlineMethodChecked()) {
+            $("#notify__message").remove();
+        }
     });
     $("input[name='address']").change(function () {
         invalid = checkValidData();
         setErrorLabelDisplay();
+        if (!invalid && onlineMethodChecked()) {
+            $("#pay-action").removeAttr("disabled");
+            $("#notify__message").remove();
+            $("#pay-action").css("opacity", 1);
+        } else {
+            $("#pay-action").css("opacity", 0.5);
+            $("#pay-action").attr("disabled", true);
+        }
+        if (!invalid && !onlineMethodChecked()) {
+            $("#notify__message").remove();
+        }
     });
     $("input[name='phoneNum']").change(function () {
         invalid = checkValidData();
         setErrorLabelDisplay();
+        if (!invalid && onlineMethodChecked()) {
+            $("#vnp_OrderInfo").prepend($(this).val() + "-");
+            $("#pay-action").removeAttr("disabled");
+            $("#notify__message").remove();
+            $("#pay-action").css("opacity", 1);
+        } else {
+            $("#pay-action").css("opacity", 0.5);
+            $("#pay-action").attr("disabled", true);
+        }
+        if (!invalid && !onlineMethodChecked()) {
+            $("#notify__message").remove();
+        }
     });
     $("input[name='paymentMethod']").change(function () {
         invalid = checkValidData();
         setErrorLabelDisplay();
+        if (!invalid && onlineMethodChecked()) {
+            $("#pay-action").removeAttr("disabled");
+            $("#notify__message").remove();
+            $("#pay-action").css("opacity", 1);
+        } else {
+            $("#pay-action").css("opacity", 0.5);
+            $("#pay-action").attr("disabled", true);
+        }
+        if (!invalid && !onlineMethodChecked()) {
+            $("#notify__message").remove();
+        }
     });
 
     $(".submit-order").click(() => {

@@ -18,10 +18,8 @@
     <meta name="author" content="">
     <title>VNPAY RESPONSE</title>
     <!-- Bootstrap core CSS -->
-    <link href="/vnpay_jsp/assets/bootstrap.min.css" rel="stylesheet"/>
-    <!-- Custom styles for this template -->
-    <link href="/vnpay_jsp/assets/jumbotron-narrow.css" rel="stylesheet">
-    <script src="/vnpay_jsp/assets/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 <body>
 <%
@@ -88,6 +86,7 @@
         </div>
         <div class="form-group">
             <label>Payment Status:</label>
+            <input type="hidden" name="transaction__status" value="<%=request.getParameter("vnp_TransactionStatus")%>">
             <label>
                 <%
                     if (signValue.equals(vnp_SecureHash)) {
@@ -95,13 +94,13 @@
                             request.setAttribute("orderStatus", "paid");
                             request.setAttribute("orderId", request.getParameter("vnp_TransactionNo"));
                             request.getRequestDispatcher("").forward(request, response);
-//                            out.print("Success");
                         } else {
-//                            out.print("Failed");
+                            request.setAttribute("orderStatus", "error");
+                            request.getRequestDispatcher("").forward(request, response);
                         }
-
                     } else {
-//                        out.print("invalid signature");
+                        request.setAttribute("orderStatus", "error");
+                        request.getRequestDispatcher("").forward(request, response);
                     }
                 %></label>
         </div>

@@ -29,7 +29,6 @@
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
     <title>Thông tin hóa đơn</title>
 </head>
 
@@ -86,7 +85,7 @@
         <div class="d-flex justify-content-center continue__shopping">
             <p class="fw-bold cont__shopping-title">
                 <i class="fa-solid fa-arrow-left"></i>
-                <a href="index.html">
+                <a href="${pageContext.request.contextPath}">
                     Tiếp tục mua sắm
                 </a>
             </p>
@@ -158,11 +157,9 @@
                     <select name="language" id="language" class="form-control" hidden>
                         <option value="vn">Tiếng Việt</option>
                     </select>
-                    <button type="submit" id="pay-action">thanh toán</button>
+                    <span class="text-danger" style="font-size:12px" id="notify__message">Vui lòng nhập đầy đủ thông tin trước khi thanh toán</span>
+                    <button type="submit" id="pay-action" disabled>thanh toán</button>
                 </form>
-                <button disabled class="d-none">
-                    <i class="fa-solid fa-circle-check"></i>
-                </button>
             </div>
         </div>
         <div class="col product__list">
@@ -261,7 +258,6 @@
                 </div>
 
                 <div class="row mt-5">
-                    <%--                    <input type="hidden" name="orderId" value="${requestScope.get("orderId")}">--%>
                     <c:choose>
                         <c:when test="${requestScope.get('orderId').length() > 0}">
                             <input type="hidden" name="orderId" value="${requestScope.get('orderId')}">

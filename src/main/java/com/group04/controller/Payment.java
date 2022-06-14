@@ -23,28 +23,6 @@ import java.util.List;
 public class Payment extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-//        Customer de = new Customer("hieu", "adaw", "123123", "123123");
-//        String c = OrderServices.getInstance().addCustomer(de);
-//        System.out.println("add customer return id " + c);
-//        Order o = new Order("123", c, "awd", "online banking", 123123, 1);
-//
-//        boolean a = OrderServices.getInstance().addOrder(o);
-//        System.out.println("add order " + a);
-//        Product s = OrderServices.getInstance().getProduct("sp1");
-//        System.out.println("get product " + s.getId());
-//
-//        OrderDetails od = new OrderDetails(o.getOrderId(), s.getId(), 1, "L");
-//
-//        boolean b = OrderServices.getInstance().addOrderDetails(od);
-//        System.out.println("add order details" + b);
-//        Customer d = OrderServices.getInstance().getCustomer(c);
-//        System.out.println("get customer by id" + d.getCustomerId());
-//
-//        Customer e = OrderServices.getInstance().getCustomerByPhoneNumber(de.getPhoneNum());
-//        System.out.println("get customer by phone " + e.getCustomerId());
-
-
         List<Product> cart = new ArrayList<>();
         Product p1 = new Product("sp1", "Bạc Xỉu", "Đồ uống", 199999, "The Coffee House", 1);
         p1.setSize("L");
