@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
             crossorigin="anonymous"></script>
@@ -28,6 +29,7 @@
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
     <title>Thông tin hóa đơn</title>
 </head>
 
@@ -93,18 +95,18 @@
     <div class="row">
         <div class="col input-form">
             <div class="row mb-3 user-input" style="margin-left:35%;">
-                <input type="text" class="form-control" placeholder="Họ và Tên*" name="fullname">
+                <input type="text" class="form-control customer__input" placeholder="Họ và Tên*" name="fullname">
             </div>
             <div class="row mb-3 user-input" style="margin-left:35%;">
-                <input type="email" class="form-control" placeholder="Email"
+                <input type="email" class="form-control customer__input" placeholder="Email"
                        name="email">
             </div>
             <div class="row mb-3 user-input" style="margin-left:35%;">
-                <input type="text" class="form-control" placeholder="Địa chỉ*"
+                <input type="text" class="form-control customer__input" placeholder="Địa chỉ*"
                        name="address">
             </div>
             <div class="row mb-3 user-input" style="margin-left:35%;">
-                <input type="text" class="form-control" placeholder="Số điện thoại*"
+                <input type="text" class="form-control customer__input" placeholder="Số điện thoại*"
                        name="phoneNum">
             </div>
             <div class="col-12 d-flex w-100 input-text d-flex justify-content-evenly required__label">
@@ -116,6 +118,7 @@
             <div class="row payment__item">
                 <div class="col-2">
                     <img src="images/bank.png" width="50" height="50">
+                    <input type="hidden" name="pMethod" value="online banking">
                 </div>
                 <div class="col-8">
                     <label for="onlineBanking" class="fw-bold">
@@ -123,7 +126,7 @@
                     </label>
                 </div>
                 <div class="col-2">
-                    <input type="radio" name="paymentMethod" id="onlineBanking" value="online banking">
+                    <input type="radio" name="paymentMethod" id="onlineBanking" value="online banking" checked>
                 </div>
             </div>
             <div class="row payment__item pt-p13">
@@ -345,6 +348,7 @@
     </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script src="js/main.js"></script>
 <script>
     $(() => {

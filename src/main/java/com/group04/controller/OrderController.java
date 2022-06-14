@@ -44,9 +44,10 @@ public class OrderController extends HttpServlet {
         }
 
         String[] in = new String[]{orderId, c.getCustomerId(), fullname, address, phoneNum, paymentMethod};
+        String[] newArr = setNullToEmptyString(in);
 
         boolean isError = false;
-        if (InvalidCheckHelper.isEmpty(in)) isError = true;
+        if (InvalidCheckHelper.isEmpty(newArr)) isError = true;
 
         if (!isError) {
             Order order = new Order(orderId, c.getCustomerId(), voucher, paymentMethod, totalPrice, status);
@@ -70,5 +71,13 @@ public class OrderController extends HttpServlet {
         } else {
             response.sendError(HttpServletResponse.SC_NOT_ACCEPTABLE);
         }
+    }
+
+    private String[] setNullToEmptyString(String[] inp) {
+        String[] re = new String[inp.length];
+        for (int i = 0; i < inp.length; i++) {
+            re[i] = inp[i] == null ? "" : inp[i];
+        }
+        return re;
     }
 }
