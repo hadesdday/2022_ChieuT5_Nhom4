@@ -1,6 +1,8 @@
 package com.group04.beans;
 
-public class Customer {
+import java.io.Serializable;
+
+public class Customer implements Serializable {
     private String customerId;
     private String name;
     private String address;

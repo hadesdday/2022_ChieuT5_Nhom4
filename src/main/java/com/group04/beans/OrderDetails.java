@@ -1,6 +1,8 @@
 package com.group04.beans;
 
-public class OrderDetails {
+import java.io.Serializable;
+
+public class OrderDetails implements Serializable {
     private String orderId;
     private String productId;
     private int quantity;
