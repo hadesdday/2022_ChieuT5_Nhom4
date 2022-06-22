@@ -1,0 +1,40 @@
+// Mixins
+// --------------------------------------------------
+
+// Utilities
+@import "docs/_sass/vendor/bootstrap/mixins/hide-text";
+@import "docs/_sass/vendor/bootstrap/mixins/opacity";
+@import "docs/_sass/vendor/bootstrap/mixins/image";
+@import "docs/_sass/vendor/bootstrap/mixins/labels";
+@import "docs/_sass/vendor/bootstrap/mixins/reset-filter";
+@import "docs/_sass/vendor/bootstrap/mixins/resize";
+@import "docs/_sass/vendor/bootstrap/mixins/responsive-visibility";
+@import "docs/_sass/vendor/bootstrap/mixins/size";
+@import "docs/_sass/vendor/bootstrap/mixins/tab-focus";
+@import "docs/_sass/vendor/bootstrap/mixins/reset-text";
+@import "docs/_sass/vendor/bootstrap/mixins/text-emphasis";
+@import "docs/_sass/vendor/bootstrap/mixins/text-overflow";
+@import "docs/_sass/vendor/bootstrap/mixins/vendor-prefixes";
+
+// Components
+@import "docs/_sass/vendor/bootstrap/mixins/alerts";
+@import "docs/_sass/vendor/bootstrap/mixins/buttons";
+@import "docs/_sass/vendor/bootstrap/mixins/panels";
+@import "docs/_sass/vendor/bootstrap/mixins/pagination";
+@import "docs/_sass/vendor/bootstrap/mixins/list-group";
+@import "docs/_sass/vendor/bootstrap/mixins/nav-divider";
+@import "docs/_sass/vendor/bootstrap/mixins/forms";
+@import "docs/_sass/vendor/bootstrap/mixins/progress-bar";
+@import "docs/_sass/vendor/bootstrap/mixins/table-row";
+
+// Skins
+@import "docs/_sass/vendor/bootstrap/mixins/background-variant";
+@import "docs/_sass/vendor/bootstrap/mixins/border-radius";
+@import "docs/_sass/vendor/bootstrap/mixins/gradients";
+
+// Layout
+@import "docs/_sass/vendor/bootstrap/mixins/clearfix";
+@import "docs/_sass/vendor/bootstrap/mixins/center-block";
+@import "docs/_sass/vendor/bootstrap/mixins/nav-vertical-align";
+@import "docs/_sass/vendor/bootstrap/mixins/grid-framework";
+@import "docs/_sass/vendor/bootstrap/mixins/grid";
