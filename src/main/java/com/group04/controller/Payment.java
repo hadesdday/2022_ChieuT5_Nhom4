@@ -1,10 +1,6 @@
 package com.group04.controller;
 
-import com.group04.beans.Customer;
-import com.group04.beans.Order;
-import com.group04.beans.OrderDetails;
 import com.group04.beans.Product;
-import com.group04.services.OrderServices;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,9 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
