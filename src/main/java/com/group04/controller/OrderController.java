@@ -4,8 +4,8 @@ import com.group04.beans.Customer;
 import com.group04.beans.Order;
 import com.group04.beans.OrderDetails;
 import com.group04.beans.Product;
+import com.group04.dao.OrderDAO;
 import com.group04.helper.InvalidCheckHelper;
-import com.group04.services.OrderServices;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "Order", value = "/CreateOrder")
@@ -35,10 +34,10 @@ public class OrderController extends HttpServlet {
         String paymentMethod = request.getParameter("paymentMethod");
         int status = Integer.parseInt(request.getParameter("status"));
 
-        Customer c = OrderServices.getInstance().getCustomerByPhoneNumber(phoneNum);
+        Customer c = OrderDAO.getInstance().getCustomerByPhoneNumber(phoneNum);
         if (c == null) {
             Customer newCustomer = new Customer(fullname, address, phoneNum, email);
-            String newCustomerId = OrderServices.getInstance().addCustomer(newCustomer);
+            String newCustomerId = OrderDAO.getInstance().addCustomer(newCustomer);
             c = newCustomer;
             c.setCustomerId(newCustomerId);
         }
@@ -52,7 +51,7 @@ public class OrderController extends HttpServlet {
         if (!isError) {
             Order order = new Order(orderId, c.getCustomerId(), voucher, paymentMethod, totalPrice, status);
 
-            boolean isCreated = OrderServices.getInstance().addOrder(order);
+            boolean isCreated = OrderDAO.getInstance().addOrder(order);
 
             HttpSession session = request.getSession();
             List<Product> cart = (List<Product>) session.getAttribute("cart");
@@ -61,7 +60,7 @@ public class OrderController extends HttpServlet {
 
             for (Product p : cart) {
                 orderDetails = new OrderDetails(orderId, p.getId(), p.getQuantity(), p.getSize());
-                OrderServices.getInstance().addOrderDetails(orderDetails);
+                OrderDAO.getInstance().addOrderDetails(orderDetails);
             }
 
             if (isCreated) {
