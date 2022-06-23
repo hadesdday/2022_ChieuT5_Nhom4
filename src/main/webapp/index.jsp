@@ -97,7 +97,7 @@
                 <input type="text" class="form-control customer__input" placeholder="Họ và Tên*" name="fullname">
             </div>
             <div class="row mb-3 user-input" style="margin-left:35%;">
-                <input type="email" class="form-control customer__input" placeholder="Email"
+                <input type="email" class="form-control customer__input" placeholder="Email*"
                        name="email">
             </div>
             <div class="row mb-3 user-input" style="margin-left:35%;">
@@ -242,7 +242,6 @@
                         <p class="fw-bold">Tổng giá phải trả</p>
                     </div>
                     <div class="col text-end">
-                        <%--                        <input type="hidden" name="status" value="1">--%>
                         <input type="hidden" name="totalPrice" value="${totalPrice}">
                         <c:choose>
                             <c:when test="${requestScope.get('orderStatus').equals('paid')}">
