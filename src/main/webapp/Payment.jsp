@@ -10,6 +10,15 @@
 <jsp:useBean id="shippingFee" scope="request" type="java.lang.Integer"/>
 <jsp:useBean id="vat" scope="request" type="java.lang.Integer"/>
 
+<%!
+    public boolean checkPaidStatus(String status) {
+        if (status.equals("paid")) {
+            return true;
+        }
+        return false;
+    }
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -348,15 +357,26 @@
 <script src="js/main.js"></script>
 <script>
     $(() => {
-        var orderStatus = $("input[name='orderStatus']").val();
-        if (orderStatus === "paid") {
+        function setPaidStatus() {
             $("input[name='paymentMethod']").attr("disabled", true);
             $("input[name='paymentMethod']").attr("disabled", true);
             $("#pay-action").attr("disabled", true);
             $("#pay-action").css("opacity", 0.5);
             $("#pay-action").text("BẠN ĐÃ THANH TOÁN HÓA ĐƠN NÀY");
         }
-    })
+
+        function checkPaidStatus() {
+            var orderStatus = $("input[name='orderStatus']").val();
+            if (orderStatus === "paid") {
+                return true;
+            }
+            return false;
+        }
+
+        if (checkPaidStatus()) {
+            setPaidStatus();
+        }
+    });
 </script>
 </body>
 

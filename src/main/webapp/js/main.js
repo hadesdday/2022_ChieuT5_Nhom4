@@ -176,16 +176,24 @@ function onlineMethodChecked() {
     return false;
 }
 
+function allowOnlinePayAction() {
+    $("#pay-action").removeAttr("disabled");
+    $("#notify__message").remove();
+    $("#pay-action").css("opacity", 1);
+}
+
+function denyOnlinePayAction() {
+    $("#pay-action").css("opacity", 0.5);
+    $("#pay-action").attr("disabled", true);
+}
+
 $(() => {
     var invalid = checkValidData();
 
     if (!invalid && onlineMethodChecked()) {
-        $("#pay-action").removeAttr("disabled");
-        $("#notify__message").remove();
-        $("#pay-action").css("opacity", 1);
+        allowOnlinePayAction();
     } else {
-        $("#pay-action").css("opacity", 0.5);
-        $("#pay-action").attr("disabled", true);
+        denyOnlinePayAction();
     }
 
     if (!invalid && !onlineMethodChecked()) {
@@ -308,4 +316,5 @@ $(() => {
             })
         }
     })
-})
+});
+
