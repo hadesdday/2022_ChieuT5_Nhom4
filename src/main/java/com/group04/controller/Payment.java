@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "Payment", value = "")
+@WebServlet(name = "Payment", value = "/Payment")
 public class Payment extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -45,7 +45,7 @@ public class Payment extends HttpServlet {
         request.setAttribute("vat", vat);
         request.setAttribute("totalPriceWithoutFee", totalPriceWithoutFee);
         request.setAttribute("cart", cart);
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        request.getRequestDispatcher("Payment.jsp").forward(request, response);
     }
 
     @Override

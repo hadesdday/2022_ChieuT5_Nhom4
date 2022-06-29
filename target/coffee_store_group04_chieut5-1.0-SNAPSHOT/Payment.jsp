@@ -267,6 +267,7 @@
                         </c:when>
                     </c:choose>
                     <form action="${pageContext.request.contextPath}/CreateOrder" id="order-form" hidden></form>
+                    <form action="${pageContext.request.contextPath}/success.jsp" id="order-success" hidden></form>
                     <button class="submit-order">Đặt hàng</button>
                 </div>
                 <div class="row mt-3">

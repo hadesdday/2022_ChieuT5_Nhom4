@@ -300,7 +300,7 @@ $(() => {
                 },
                 success: function (data) {
                     sessionStorage.clear();
-                    location.replace("http://localhost:8080/coffee_store_group04_chieut5_war/success.jsp")
+                    location.replace($("#order-success").attr("action"));
                 },
                 error: function (data) {
                     console.log(data.status);
