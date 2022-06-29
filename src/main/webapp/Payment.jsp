@@ -10,15 +10,6 @@
 <jsp:useBean id="shippingFee" scope="request" type="java.lang.Integer"/>
 <jsp:useBean id="vat" scope="request" type="java.lang.Integer"/>
 
-<%!
-    public boolean checkPaidStatus(String status) {
-        if (status.equals("paid")) {
-            return true;
-        }
-        return false;
-    }
-%>
-
 <!DOCTYPE html>
 <html lang="en">
 
