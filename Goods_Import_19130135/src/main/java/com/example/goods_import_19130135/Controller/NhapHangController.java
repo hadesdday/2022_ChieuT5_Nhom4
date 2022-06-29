@@ -11,7 +11,8 @@ import java.io.IOException;
 public class NhapHangController extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    HttpSession session = request.getSession();
+    request.getRequestDispatcher("index.jsp").forward(request, response);
   }
 
   @Override
@@ -26,10 +27,9 @@ public class NhapHangController extends HttpServlet {
     String quantity = request.getParameter("quantity");
     String totalPrice = request.getParameter("totalPrice");
 
-    if(name.equals("")){
-      request.setAttribute("error","Input empty");
-    }
     ProductDAO.getInstance().addProduct(name,brand,prod,typeProduct,unit,importPrice,quantity,totalPrice);
+    request.setAttribute("message", "Lưu hàng hóa thành công !");
     request.getRequestDispatcher("index.jsp").forward(request, response);
+
   }
 }

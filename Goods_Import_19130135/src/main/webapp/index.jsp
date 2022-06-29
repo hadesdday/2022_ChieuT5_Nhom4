@@ -11,6 +11,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta http-equiv="cache-control" content="max-age=0" />
+  <meta http-equiv="cache-control" content="no-cache" />
+  <meta http-equiv="expires" content="0" />
+  <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+  <meta http-equiv="pragma" content="no-cache" />
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <!-- Meta, title, CSS, favicons, etc. -->
   <meta charset="utf-8">
@@ -39,7 +44,7 @@
   <link href="vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
   <!-- Custom Theme Style -->
-  <link href="build/css/custom.css" rel="stylesheet">
+  <link href="build/css/customindex.css" rel="stylesheet">
 </head>
 
 <body class="nav-md">
@@ -72,7 +77,7 @@
           <div class="menu_section">
             <h3>Chức năng</h3>
             <ul class="nav side-menu">
-              <li><a><i class="fa fa-home"></i> Trang chủ <span class="fa fa-chevron-down"></span></a>
+              <li><a href="home.jsp"><i class="fa fa-home"></i> Trang chủ <span class="fa fa-chevron-down"></span></a>
 
               </li>
               <li><a href="index.jsp"><i class="fa fa-edit"></i> Nhập hàng hóa <span class="fa fa-chevron-down"></span></a>
@@ -228,6 +233,7 @@
 
     <!-- page content -->
     <div class="col-md-6 ">
+      // Goods import page
       <div class="x_panel">
         <div class="x_title">
           <h2>Nhập hàng hóa mới<small>- Định kì hằng tuần -</small></h2>
@@ -248,25 +254,27 @@
         </div>
         <div class="x_content">
           <br />
-          <form class="form-horizontal form-label-left" action="nhapHangController" method="post">
+          <form id="importform" class="form-horizontal form-label-left" action="nhapHangController" method="post">
 
             <div class="form-group row ">
               <label class="control-label col-md-3 col-sm-3 ">Tên hàng hóa</label>
-              <div class="col-md-9 col-sm-9 ">
-                <input name="name" type="text" class="form-control" placeholder="Nhập tên hàng hóa" required autocomplete="on">
-                <span class="alert-danger">${error}</span>
-              </div>
+                <div class="col-md-9 col-sm-9 input-group">
+                  <input id="name" name="name" type="text" class="form-control input" placeholder="Nhập tên hàng hóa" autocomplete="on">
+                  <span class="form-message"></span>
+                </div>
             </div>
             <div class="form-group row ">
               <label class="control-label col-md-3 col-sm-3 ">Hãng sản xuất</label>
-              <div class="col-md-9 col-sm-9 ">
-                <input name="brand" type="text" class="form-control" placeholder="Nhập hãng sản xuất">
+              <div class="col-md-9 col-sm-9 input-group">
+                <input id="brand" name="brand" type="text" class="form-control input" placeholder="Nhập hãng sản xuất">
+                <span class="form-message"></span>
               </div>
             </div>
             <div class="form-group row ">
               <label class="control-label col-md-3 col-sm-3 ">Nhà cung cấp</label>
-              <div class="col-md-9 col-sm-9 ">
-                <input name="prod" type="text" class="form-control" placeholder="Nhập nhà cung cấp" required="">
+              <div class="col-md-9 col-sm-9 input-group">
+                <input id="prod" name="prod" type="text" class="form-control input" placeholder="Nhập nhà cung cấp" >
+                <span class="form-message"></span>
               </div>
             </div>
 
@@ -297,50 +305,57 @@
             </div>
             <div class="form-group row ">
               <label class="control-label col-md-3 col-sm-3 ">Đơn giá nhập</label>
-              <div class="col-md-9 col-sm-9 ">
-                <input name="importPrice" id="dongia" type="number" class="form-control" placeholder="Nhập đơn giá cho 1.0 đơn vị tính" required="">
+              <div class="col-md-9 col-sm-9 input-group">
+                <input id="importPrice" name="importPrice" id="dongia" type="number" class="form-control input" placeholder="Nhập đơn giá cho 1.0 đơn vị tính" >
+                <span class="form-message"></span>
               </div>
             </div>
             <div class="form-group row ">
               <label class="control-label col-md-3 col-sm-3 ">Số lượng nhập</label>
-              <div class="col-md-9 col-sm-9 ">
-                <input name="quantity" id="soluong" type="number" class="form-control" placeholder="Nhập số lượng" required="">
+              <div class="col-md-9 col-sm-9 input-group">
+                <input id="quantity" name="quantity" id="soluong" type="number" class="form-control input" placeholder="Nhập số lượng" >
+                <span class="form-message"></span>
               </div>
             </div>
             <div class="form-group row">
               <label class="col-form-label col-md-3 col-sm-3 ">Tổng giá trị đơn hàng</label>
-              <div class="col-md-9 col-sm-9 ">
-                <input value="10" name="totalPrice" id="result" onchange="sumss()"  type="number" class="form-control" disabled="disabled" placeholder="">
+              <div class="col-md-9 col-sm-9 input-group">
+                <input name="totalPrice" id="result"  type="number" class="form-control input"  placeholder="">
+                <span class="form-message"></span>
               </div>
             </div>
-
 
             <div class="ln_solid"></div>
             <div class="form-group">
               <div class="col-md-9 col-sm-9  offset-md-3">
-                <button type="button" class="btn btn-primary" onclick="alert('error '+ ${error})">Hủy</button>
                 <button type="reset" class="btn btn-primary">Nhập lại</button>
-                <button id="change" href="#" type="submit" onclick="confirms()" class="btn btn-success">Lưu thông tin</button>
+                <button id="change" href="#" type="submit" class="btn btn-success">Lưu thông tin</button>
               </div>
             </div>
 
           </form>
         </div>
       </div>
+
     </div>
     <!-- /page content -->
-
+    <c:if test="${not empty message }">
+      <script>
+        window.addEventListener("load", function (){alert("${message}")})
+      </script>
+    </c:if>
     <!-- footer content -->
     <footer>
       <div class="pull-right">
         Phân quyền : Quản lý
       </div>
-      <div class="clearfix"></div>
+      <div class="clearfix" style="height: 96vh"></div>
     </footer>
     <!-- /footer content -->
   </div>
 </div>
 
+<script src="build/validation/validationForm.js"></script>
 <!-- jQuery -->
 <script src="vendors/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap -->
@@ -376,48 +391,27 @@
 <script src="vendors/starrr/dist/starrr.js"></script>
 <!-- Custom Theme Scripts -->
 <script src="build/js/custom.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js%22%3E"></script>
+
+
 <script>
-  function confirms() {
-    var result = confirm("Nhập hàng hóa với dữ liệu vừa đưa vào ?");
-    if(result == true) {
-    // if (result == true) {
-    //   var result = prompt("Lưu thành công ! \n" + "Tiếp tục nhập thêm hàng mới ? \n" + "Nhập Yes để tiếp tục, hoặc No để kết thúc việc nhập hàng.", "");
-    //   if (result == "Yes" || result == "yes") {
-    //     alert("Trở về giao diện nhập liệu !");
-    //     document.getElementById("change").href = "index.jsp";
-    //   } else if (result == "No" || result == "no") {
-    //     alert("Hoàn tất việc nhập hàng !");
-    //     document.getElementById("myLink").href = "lv2.html";
-    //   }
-    //   else {
-    //     alert("Bạn chưa nhập lựa chọn !");
-    //   }
-      var continues = confirm("Lưu thành công ! \n" + "Tiếp tục nhập thêm hàng mới ?");
-      if (continues == true) {
-        alert("Trở về giao diện nhập liệu !");
-        document.getElementById("change").href = "index.jsp";
-      } else {
-        alert("Hoàn tất việc nhập hàng !");
-      }
-    } else {
-      alert("Không lưu hàng hóa vừa nhập !");
-    }
-  }
+  document.addEventListener('DOMContentLoaded', function () {
+    Validator({
+      form: '#importform',
+      formGroupSelector: '.input-group',
+      errorSelector: '.form-message',
+      rules: [
+        Validator.isRequired('#name', 'Please fill this field !'),
+        Validator.isRequired('#brand', 'Please fill this field !'),
+        Validator.isRequired('#prod', 'Please fill this field !'),
+        Validator.isRequired('#importPrice', 'Please fill this field !'),
+        Validator.isRequired('#quantity', 'Please fill this field !'),
+        Validator.isRequired('#result', 'Please fill this field !')
+      ]
+    });
+  });
 </script>
-<script>
-  function sumss(){
-    let a = Number(document.getElementById("dongia").value);
-    let b = Number(document.getElementById("soluong").value);
-
-    let sum = parseInt(a) * b;
-
-    document.getElementById('result').placeholder = sum + "vnd";
-    window.onload = sum;
-  }
-</script>
-
-
-
 
 </body></html>
 

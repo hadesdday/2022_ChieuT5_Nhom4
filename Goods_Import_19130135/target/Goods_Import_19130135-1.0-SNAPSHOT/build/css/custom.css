@@ -4,6 +4,15 @@
   src: url("https://netdna.bootstrapcdn.com/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.eot");
   src: url("https://netdna.bootstrapcdn.com/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("https://netdna.bootstrapcdn.com/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.woff") format("woff"), url("https://netdna.bootstrapcdn.com/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.ttf") format("truetype"), url("https://netdna.bootstrapcdn.com/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular") format("svg"); }
 
+.input-group.invalid .input {
+  border: 1px solid #f33a58 !important;
+}
+
+.input-group.invalid .form-message {
+  color: #f33a58;
+  font-size: 13px;
+}
+
 .glyphicon {
   position: relative;
   top: 1px;
@@ -1694,8 +1703,14 @@ h2 {
   width: 100%;
   float: left;
   clear: both;
-  margin-top: 5px; }
+  margin-top: 5px;
 
+  display: flex;
+}
+.x_content .profile_img img
+{
+  max-width: 100%;
+}
 .x_content h4 {
   font-size: 16px;
   font-weight: 500; }
@@ -1749,8 +1764,13 @@ legend {
   font-weight: 300; }
 
 .profile_details .profile_left {
-  background: white; }
+  background: white;
+  width: 30%;
+}
+.profile-right{
+  width:70%;
 
+}
 .pagination.pagination-split li {
   display: inline-block;
   margin-right: 3px; }
@@ -2200,7 +2220,7 @@ ul.quick-list li i {
 
 .widget_summary {
   width: 100%;
-  display: -webkit-inline-box;
+  /*display: -webkit-inline-box;*/
   display: -ms-inline-flexbox;
   display: inline-flex; }
 
