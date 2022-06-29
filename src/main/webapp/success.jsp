@@ -78,7 +78,7 @@
             lát</p>
     </div>
     <div class="row text-center">
-        <a href="${pageContext.request.contextPath}">
+        <a href="${pageContext.request.contextPath}/">
             <button class="back-to-home">
                 <i class="fa-solid fa-arrow-left m-1"></i>
                 Trở về trang chủ
